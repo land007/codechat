@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  codechat:
+    build: .
+    ports:
+      - "6080:6080"  # noVNC web interface
+      - "5901:5901"  # VNC port
+    volumes:
+      - ./workspace:/home/developer/workspace
+    environment:
+      - DISPLAY=:1
+      - RESOLUTION=1920x1080
+    privileged: true
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    container_name: codechat
