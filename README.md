@@ -9,6 +9,11 @@ CodeChat - Docker container with mainstream programming tools accessible via noV
 
 ### Pull and Run
 ```bash
+# Option 1: Using GitHub Container Registry
+docker pull ghcr.io/land007/codechat:latest
+docker run -d -p 6080:6080 -p 5901:5901 --name codechat ghcr.io/land007/codechat:latest
+
+# Option 2: Using Docker Hub
 docker pull land007/codechat:latest
 docker run -d -p 6080:6080 -p 5901:5901 --name codechat land007/codechat:latest
 ```
@@ -54,7 +59,9 @@ CodeChat/
 - 🔐 Password-protected VNC access
 
 ## Configuration
-Set the following in your GitHub repository secrets:
+No secrets required! Uses GitHub Container Registry (GHCR) which automatically authenticates with GITHUB_TOKEN.
+
+If you want to also push to Docker Hub, you can add these secrets:
 - `DOCKER_USERNAME`: Your Docker Hub username
 - `DOCKER_PASSWORD`: Your Docker Hub password or access token
 
