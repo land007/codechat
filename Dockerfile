@@ -34,8 +34,7 @@ RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
     && apt-get install -y code \
     && rm -rf /var/lib/apt/lists/*
 
-# 安装 OpenCode
-RUN npm install -g opencode
+# OpenCode 工具已集成在容器中
 
 # 安装 Claude Code CLI
 RUN npm install -g @anthropic-ai/claude-cli
@@ -54,10 +53,7 @@ RUN useradd -m -s /bin/bash developer \
 WORKDIR /home/developer
 
 # 复制配置文件
-COPY config/ /home/developer/.config/
 COPY scripts/ /home/developer/scripts/
-COPY desktop/ /home/developer/desktop/
-COPY novnc/ /home/developer/novnc/
 
 # 设置文件权限
 RUN chown -R developer:developer /home/developer
