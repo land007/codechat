@@ -36,13 +36,9 @@ RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
 
 # OpenCode 工具已集成在容器中
 
-# 安装 Claude Code CLI
-RUN npm install -g @anthropic-ai/claude-cli
+# Claude CLI 可通过其他方式安装
 
-# 安装 Cursor (通过下载AppImage)
-RUN wget -O /tmp/cursor.AppImage https://download.cursor.sh/linux/appImage/x64 \
-    && chmod +x /tmp/cursor.AppImage \
-    && mv /tmp/cursor.AppImage /usr/local/bin/cursor
+# Cursor 可手动安装
 
 # 创建用户目录结构
 RUN useradd -m -s /bin/bash developer \
